@@ -1,5 +1,4 @@
 var express = require('express')
-	, mongoose = require('mongoose')
 	, app = express();
 
 // serve static assets
