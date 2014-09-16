@@ -1,5 +1,4 @@
 body {
-	text-align: center;
 	margin-left: 15%;
 	margin-right: 15%;
 }
@@ -17,7 +16,7 @@ p {
 }
 
 div {
-	padding: 10px;
+	padding: 5px;
 }
 
 input.form-control {
@@ -28,4 +27,14 @@ input.form-control {
 button.btn-primary {
 	display: inline-block;
 	vertical-align: top;
+	width: 19%;
+}
+
+.comment {
+	padding: 0px;
+	text-align: left;
+}
+
+.comment p {
+	margin: 0px 0px 5px;
 }

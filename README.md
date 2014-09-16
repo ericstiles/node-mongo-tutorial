@@ -9,5 +9,5 @@ Node.js and MongoDB go well together. Here's a quick way to get started with som
 
 2. feature introduction, mongo connection and handlebars
 	* we'll be creating a way for users to comment on a static image
-	* `app.js` now has mongoose boilerplate with a mongo connection
-	* `index.html` contains the layout will later use `x/handlebars` templates for rendering markup
+	* `index.html` contains the layout and handlebars templates for rendering markup
+	* `public/js/client-app.js` has some code for rendering a comment on the screen
