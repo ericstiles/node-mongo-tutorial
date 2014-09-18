@@ -7,15 +7,26 @@
 	</head>
 	<body>
 
+		<!-- provide author name -->
+		<div id="author-name-submit">
+			<input class="form-control" placeholder="who are you?">
+			<button class="btn btn-save">submit name</button>
+		</div>
+
+		<!-- displays author name -->
+		<div id="author-name"></div>
+
+		<!-- displays new comments since page load -->
+		<div id="comment-count"></div>
+
 		<div class="text-center">
 			<h1>A Comment Feature!</h1>
 			<p>Here's a picture of a dog I found on the internet. How does it make you feel?</p>
 			<img src="/img/marnie-the-dog.jpg" />
-		</div>
-
-		<div>
-			<input class="comment-input form-control" placeholder="it makes me feel great">
-			<button class="comment-submit btn btn-primary">comment</button>
+			<div>
+				<input class="comment-input form-control" placeholder="it makes me feel great">
+				<button class="comment-submit btn btn-primary">comment</button>
+			</div>			
 		</div>
 
 		<!-- to be populated with comments -->
@@ -33,6 +44,7 @@
 
 	</body>
 
+	<script src="/socket.io/socket.io.js"></script>
 	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 	<script src="/js/client-app.js"></script>

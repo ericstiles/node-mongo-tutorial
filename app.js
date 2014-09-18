@@ -1,11 +1,17 @@
 var express = require('express')
 	, mongoose = require('mongoose')
+	, cookieParser = require('cookie-parser')	
 	, bodyParser = require('body-parser')
+	, exSession = require('express-session')
 	, app = express();
 
 // parse x-www-form-urlencoded and json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// cookies!
+app.use(cookieParser());
+app.use(exSession({ secret: 'supersecret' }));
 
 // serve static assets
 app.use(express.static(__dirname + '/public'));
@@ -38,13 +44,23 @@ db.once('open', function callback() {
 		} else {
 			response.json({ status: 200, data: data })
 		}
-	}	
+	}
+
+	// POST /session/author - cookie author name, return message
+	// @params author
+
+	app.post('/session/author', function(req, res) {
+		req.session.author = req.body.author
+		respondWith({ author: req.session.author }, null, res);
+	});
 
 	// POST /comments/create - new comment, responds with comment
 	// @params author, text	
 
 	app.post('/comments/create', function(req, res) {
-		new Comment(req.body).save(function(error, comment) {
+		var commentAttr = req.body;
+		commentAttr['author'] = req.session.author;
+		new Comment(commentAttr).save(function(error, comment) {
 			respondWith(comment, error, res);
 		});
 	});
@@ -62,4 +78,15 @@ db.once('open', function callback() {
 	var server = app.listen(3000, function() {
 		console.log('listening on %d', server.address().port);
 	});
+
+	// socket server
+	var io = require('socket.io')(server);
+
+	// comment listener
+	io.on('connection', function(socket) {
+		socket.on('comment', function(comment) {
+			io.sockets.emit('newComment', comment);
+		});
+	});
+
 });

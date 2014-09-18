@@ -11,6 +11,34 @@ function renderComment(comment) {
 	$('#comments-container').prepend(html);
 }
 
+// socket.io 
+var socket = io.connect('http://localhost')
+	, commentCount = 0;
+
+socket.on('newComment', function(comment) {
+	renderComment(comment);
+
+	if (comment.author !== localStorage.author) {
+		commentCount++;
+
+		var countString = commentCount + " NEW COMMENT"
+		if (commentCount > 1) countString += "S";
+
+		$('#comment-count').text(countString);
+	}
+});
+
+// session author name
+$('#author-name-submit button').click(function(event) {
+	$.post('/session/author', { 
+		author: $('#author-name-submit input').val() 
+	}, function(res) {
+		$('#author-name-submit').hide();
+		$('#author-name').text('Welcome, ' + res.data.author);
+		localStorage.author = res.data.author;
+	});
+});
+
 // create comment
 $('.comment-submit').click(function(event) {
 	
@@ -19,7 +47,7 @@ $('.comment-submit').click(function(event) {
 		, data = { text: comment, author: 'Anonymous' }
 
 	$.post('/comments/create', data, function(res) {
-		renderComment(res.data);
+		socket.emit('comment', res.data)
 		$comment_el.val('');
 	});
 
@@ -31,3 +59,8 @@ $.get('/comments', function(res) {
 		renderComment(comment)
 	});
 });
+
+if (localStorage.author) {
+	$('#author-name-submit').hide();
+	$('#author-name').text(localStorage.author)
+}

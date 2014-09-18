@@ -19,13 +19,16 @@ div {
 	padding: 5px;
 }
 
-input.form-control {
-	display: inline-block;
+input, button {
+	display: inline-block !important;
+	vertical-align: top !important;
+}
+
+input.comment-input {
 	width: 80%;
 }
 
-button.btn-primary {
-	display: inline-block;
+button.comment-button {
 	vertical-align: top;
 	width: 19%;
 }
@@ -41,4 +44,24 @@ button.btn-primary {
 
 span.comment-details {
 	font-size: 14px;
+}
+
+#author-name-submit, #author-name {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+}
+
+#author-name {
+	font-size: 16px;
+}
+
+#author-name-submit input {
+	width: 150px;
+}
+
+#comment-count {
+	position: fixed;
+	left: 10px;
+	top: 10px;
 }
