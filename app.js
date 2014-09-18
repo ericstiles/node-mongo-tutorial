@@ -44,7 +44,6 @@ db.once('open', function callback() {
 	// @params author, text	
 
 	app.post('/comments/create', function(req, res) {
-		console.log(req.body);
 		new Comment(req.body).save(function(error, comment) {
 			respondWith(comment, error, res);
 		});
