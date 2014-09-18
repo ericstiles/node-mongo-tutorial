@@ -1,6 +1,6 @@
 body {
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 img {
@@ -28,7 +28,7 @@ input.comment-input {
 	width: 80%;
 }
 
-button.comment-button {
+button.comment-submit {
 	vertical-align: top;
 	width: 19%;
 }

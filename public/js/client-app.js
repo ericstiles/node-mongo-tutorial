@@ -12,7 +12,7 @@ function renderComment(comment) {
 }
 
 // socket.io 
-var socket = io.connect('http://localhost')
+var socket = io.connect('http://grok.ngrok.com')
 	, commentCount = 0;
 
 socket.on('newComment', function(comment) {
@@ -44,7 +44,7 @@ $('.comment-submit').click(function(event) {
 	
 	var $comment_el = $('.comment-input').first()
 		, comment = $comment_el.val()
-		, data = { text: comment, author: 'Anonymous' }
+		, data = { text: comment }
 
 	$.post('/comments/create', data, function(res) {
 		socket.emit('comment', res.data)

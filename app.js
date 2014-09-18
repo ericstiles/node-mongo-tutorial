@@ -59,7 +59,8 @@ db.once('open', function callback() {
 
 	app.post('/comments/create', function(req, res) {
 		var commentAttr = req.body;
-		commentAttr['author'] = req.session.author;
+		commentAttr['author'] = req.session.author || "Anonymous";
+		
 		new Comment(commentAttr).save(function(error, comment) {
 			respondWith(comment, error, res);
 		});

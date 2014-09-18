@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 // comment document schema
 var commentSchema = new Schema({
 	created: { type: Date, default: Date.now },	
-	text: { type: String, default: 'Anonymous' },
+	text: String,
 	author: String
 }, { collection: 'comments' });
 

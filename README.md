@@ -19,3 +19,5 @@ Node.js and MongoDB go well together. Here's a quick way to get started with som
 	* `index.html` has a small handlebars template change to better represent the comment data structure
 
 4. author cookie, socket.io intro
+	* `app.js` and `client-app.js` have been updated with real time functionality via **socket.io**
+	* users can now provide a name for their posts; the name is stored in express session data
