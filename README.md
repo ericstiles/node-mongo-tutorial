@@ -17,3 +17,5 @@ Node.js and MongoDB go well together. Here's a quick way to get started with som
 	* `models/comment.js` has a schema definition for comments
 	* `public/js/client-app.js` is now updated to send and recieve comments from the server
 	* `index.html` has a small handlebars template change to better represent the comment data structure
+
+4. author cookie, socket.io intro
