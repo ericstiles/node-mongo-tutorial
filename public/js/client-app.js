@@ -15,12 +15,10 @@ function renderComment(comment) {
 $('.comment-submit').click(function(event) {
 	
 	var $comment_el = $('.comment-input').first()
-		, comment = $comment_el.val();
+		, comment = $comment_el.val()
+		, data = { text: comment, author: 'Anonymous' }
 
-	$.get('/comments/create', { 
-		text: comment, 
-		author: 'anonymous' 
-	}, function(res) {
+	$.post('/comments/create', data, function(res) {
 		renderComment(res.data);
 		$comment_el.val('');
 	});

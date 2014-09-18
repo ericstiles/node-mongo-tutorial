@@ -1,6 +1,11 @@
 var express = require('express')
 	, mongoose = require('mongoose')
+	, bodyParser = require('body-parser')
 	, app = express();
+
+// parse x-www-form-urlencoded and json
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // serve static assets
 app.use(express.static(__dirname + '/public'));
@@ -35,11 +40,12 @@ db.once('open', function callback() {
 		}
 	}	
 
-	// GET /comment - new comment, responds with comment
+	// POST /comments/create - new comment, responds with comment
 	// @params author, text	
 
-	app.get('/comments/create', function(req, res) {
-		new Comment(req.query).save(function(error, comment) {
+	app.post('/comments/create', function(req, res) {
+		console.log(req.body);
+		new Comment(req.body).save(function(error, comment) {
 			respondWith(comment, error, res);
 		});
 	});
