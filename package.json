@@ -1,8 +1,8 @@
 {
 	"name": "node-crud",
 	"dependencies": {
-		"express": "4.x",
+		"express": "4.9.1",
 		"mongoose": "3.8.x",
-		"socket.io": "1.0.x",
+		"socket.io": "1.0.x"
 	}
 }
