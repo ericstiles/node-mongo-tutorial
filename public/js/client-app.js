@@ -12,7 +12,7 @@ function renderComment(comment) {
 }
 
 // socket.io 
-var socket = io.connect('http://grok.ngrok.com')
+var socket = io.connect('http://localhost')
 	, commentCount = 0;
 
 socket.on('newComment', function(comment) {
