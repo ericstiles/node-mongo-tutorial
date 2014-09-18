@@ -1,6 +1,5 @@
 var express = require('express')
 	, mongoose = require('mongoose')
-	, bodyParser = require('body-parser')
 	, app = express();
 
 // serve static assets
@@ -37,8 +36,6 @@ db.once('open', function callback() {
 	}	
 
 	// GET /comment - new comment, responds with comment
-	// note: this should be POST but my body-parser install is borked.
-	//
 	// @params author, text	
 
 	app.get('/comments/create', function(req, res) {

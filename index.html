@@ -24,7 +24,10 @@
 		<!-- hbs template for a single comment -->
 		<script id="comment" type="text/x-handlebars-template">
 			<div class="comment">
-				<p>{{comment}} &mdash; {{time}}</p>
+				<p>
+					{{comment}} &mdash; 
+					<span class="comment-details">posted by <strong>{{author}}</strong> at {{time}}</span>
+				</p>
 			</div>
 		</script>
 

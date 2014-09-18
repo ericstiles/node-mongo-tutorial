@@ -12,4 +12,8 @@ Node.js and MongoDB go well together. Here's a quick way to get started with som
 	* `index.html` contains the layout and handlebars templates for rendering markup
 	* `public/js/client-app.js` has some code for rendering a comment on the screen
 
-3. mongoose connection, comment schema and create functionality
+3. mongoose connection, comment schema and functionality
+	* `app.js` now has has a mongo connection and endpoints for data reads and writes
+	* `models/comment.js` has a schema definition for comments
+	* `public/js/client-app.js` is now updated to send and recieve comments from the server
+	* `index.html` has a small handlebars template change to better represent the comment data structure

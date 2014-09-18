@@ -2,7 +2,11 @@ function renderComment(comment) {
 
 	var source = $('#comment').html()
 		, dateString = new Date(comment.created).toDateString()
-		, html = Handlebars.compile(source)({ comment: comment.text, time: dateString });
+		, html = Handlebars.compile(source)({ 
+			comment: comment.text, 
+			author: comment.author,
+			time: dateString 
+		});
 
 	$('#comments-container').prepend(html);
 }
